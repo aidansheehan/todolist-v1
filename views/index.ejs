@@ -5,6 +5,7 @@
     <title>To Do List</title>
   </head>
   <body>
+
     <% if ( kindOfDay === "Sunday" || kindOfDay === "Monday" ) { %>
       <h1 style="color: purple"> It's <%= kindOfDay %> </h1>
     <% } else { %>
@@ -15,7 +16,15 @@
       <li>Buy Food</li>
       <li>Cook Food</li>
       <li>Eat Food</li>
+      <% for ( let i = 0; i < listItems.length; i++ ) { %>
+        <li> <%= listItems[i] %> </li>
+      <% } %>
     </ul>
+
+    <form action="/" method="post">
+      <input type="text" name="newItem">
+      <button type="submit" name="button">Add</button>
+    </form>
 
   </body>
 </html>
