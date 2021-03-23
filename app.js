@@ -6,20 +6,24 @@ const app = express();
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
 
-var items = [];
+let items = [];
 
 app.get("/", function(req, res) {
-
-  var today = new Date();
-  var options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-
-  var day = today.toLocaleString("en-US", options);
+  let today = new Date();
+  let options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  };
+  let day = today.toLocaleString("en-US", options);
 
   res.render("index", {
-    kindOfDay: day, newListItems: items
-  }
-);
+    kindOfDay: day,
+    newListItems: items
+  });
 
 });
 
